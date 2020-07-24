@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { db } from '../Config/configFirebase';
 
 const initalState = {
@@ -38,8 +38,7 @@ const reducer = (state, action) => {
     }
 }
 
-
-const userFetchData = () => {
+export default () => {
     const [state, dispatch] = useReducer(reducer, initalState);
 
     useEffect(() => {
@@ -47,9 +46,7 @@ const userFetchData = () => {
         const getDataFrom = () => {
             try {
                 db.collection('Post').onSnapshot(snapshot => {
-                    const snap = snapshot.docs.map(doc => {
-                        doc.data()
-                    })
+                    const snap = snapshot.docs.map(doc => doc.data())
                     dispatch({ type: ACTION.FETCH_DATA, posts: snap })
                 })
             } catch (err) {
@@ -61,5 +58,3 @@ const userFetchData = () => {
 
     return state;
 }
-
-export default userFetchData
