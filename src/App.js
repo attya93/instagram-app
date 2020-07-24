@@ -7,6 +7,10 @@ import userFetchData from './Hook/useFetchData'
 
 function App() {
   const { posts, loading } = userFetchData();
+
+  // no need for a state here as the state is already in the reducer,
+  // you can move the sample data to the initial state in reducer
+
   // const [Posts, setPosts] = useState([
   //   { id: "1", username: "Mohammed Mamdouh", caption: "This is react Native", imageURL: "https://img-a.udemycdn.com/course/750x422/2833120_374b_6.jpg" },
   //   { id: "2", username: "Omar Mamdouh", caption: "the is strips API", imageURL: "https://api-prod.strapi.io/uploads/cover-react-cms_09dce2416d.jpeg" },
